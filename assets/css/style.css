@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@600&family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@600&family=Lobster&family=Old+Standard+TT&display=swap');
+
+* {
+    font-family: 'Old Standard TT', serif;
+}
+
+header { 
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 4.5%;
+
+}
+
+#contentbox {
+    display: flex;
+    justify-content: space-around;
+    width: 95%;
+    margin: 0 auto;
+}
+
+#weather {
+    width: 75%;
+    border: 5px solid black; 
+    background-image: url(https://media.cnn.com/api/v1/images/stellar/prod/230106141957-weather-california-upcoming-storms-010623.jpg?c=original);
+    display: flex; 
+    flex-direction: column;
+    padding-bottom: 15px;
+}
+
+#searchaside {
+    width: 20%;
+    border: 5px solid black; 
+    background-color: pink;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+}
+
+#searchbox { 
+    padding-top: 25px; 
+    margin: 0 auto; 
+}
+
+#userinput { 
+    width: 95%
+}
+
+
+#todayforecast {
+    margin: 0 auto; 
+    border: 5px solid black; 
+    background-color: whitesmoke;
+    width: 50%
+}
+
+
+
+#futureforecast {
+    display: flex; 
+    justify-content: space-around;
+    flex-wrap: wrap; 
+}
+
+.futurebox {
+    width: 27%;
+    margin: 10px auto;
+    border: 5px solid black; 
+    background-color: whitesmoke;
+}
+
+h2, h3, h4, p {
+    text-align: center;
+}
+
+h2 { 
+    font-size: 72px;
+    font-family: 'Bebas Neue', cursive;
+    font-style: oblique;
+}
+
+h3 {
+    font-size: 36px;
+    font-family: 'Bebas Neue', cursive;
+    color: whitesmoke; 
+    text-shadow: 7px 4px 3px black;
+}
+
+h4 {
+    font-family: 'Bebas Neue', cursive;
+    text-decoration: underline;
+    font-size: 18px;
+}
+
+
+button { 
+    margin: 0 auto; 
+}

@@ -1,34 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <title>Do I need a Raincoat?</title>
+</head>
+
+<body>
+    <header> 
+        <h2>Do I need a Raincoat?</h2>
+    </header>
+      
+
+    <div id="contentbox">
+        <div id="searchaside">
+          <form id="searchbox"> 
+            <label for="cityname">What city would you like to search?</label><br>
+                        <input type="text" name="city" id="userinput"/>
+                        <button id="searchbtn">Search</button>
+
+          </form>
+          <div id="previoussearches"></div>
+        </div>
+    
+        <div id="weather">
+
+          <h3 id="citytitle"></h3>
+          <section id="todayforecast">
+      
+          </section>
+
+          <section>
+            <h3 "futuretitle"></h3>
+            <section id="futureforecast"></section>
+          </section>
+            
+        </div>
+
+    </div>
+
+    <footer>
+
+    </footer>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
+
+<script>
 var APIkey = '9063e41d5142cabc63843121e33de2a0';
-var citytitleEL = document.getElementById("citytitle");
-var searchbtn = document.getElementById("searchbtn");
-var cityEl = document.getElementById("userinput");
-var futureEl = document.getElementById("futureforecast");
-var todayEl = document.getElementById("todayforecast");
-var futuretitleEl = document.getElementById("futuretitle");
-var prevcities = [];
-var previouscitiesEl = document.getElementById("previoussearches")
+var cityEl =  document.getElementById("userinput")
+var citytitleEL = document.getElementById("citytitle")
 
+citytitleEL.textContent = city + "'s Current Weather"
 
-function getWeather(city) {
-
-  citytitleEL.textContent = city + "'s weather today"
+function getWeather() {
+  var city = cityEl.value;
   var url = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIkey;
   
   fetch(url)
     .then(function (response) {
-      console.log(response)
       return response.json();
       })
       
     .then(function (data) {
       todaysweather(data)
       fivedayweather(data)
-      storedCities();
     }); 
   };
 
 
   function todaysweather(data) {
+    var todayEl = document.getElementById("todayforecast");
     var datetoday = dayjs().format('YYYY-MM-DD');
     var weatherinfo = data.list[0].weather[0].main;
     var tempinfo = data.list[0].main.temp;
@@ -53,6 +102,7 @@ function getWeather(city) {
 
     var windspeedEl = document.createElement('p');
     windspeedEl.textContent = "The wind speed is " + windspeedinfo + "mph"
+
 
     var humidityEl = document.createElement('p');
     humidityEl.textContent = "The humidity is " + humidityinfo + "%";
@@ -83,7 +133,7 @@ function getWeather(city) {
 
   function displayfiveday (weatherarray) {
 
-    futuretitleEl.textContent = "5 Day Forecast"
+    var futureEl = document.getElementById("futureforecast");
 
     for (var i=0; i < weatherarray.length; i++) {
       var dateinfo = weatherarray[i].datetoday
@@ -121,69 +171,27 @@ function getWeather(city) {
       var windspeedEl = document.createElement('p');
       windspeedEl.textContent = "The wind speed is " + windspeedinfo + "mph"
 
+
       var humidityEl = document.createElement('p');
       humidityEl.textContent = "The humidity is " + humidityinfo + "%";
 
       futureEl.append(newbox)
+
+
       newbox.append(dateEl, conditionsEl, weatherEl, tempEl, humidityEl, windspeedEl)
     }
 
   }
 
-  getWeather("Seattle");
-
-  searchbtn.addEventListener("click", function(event){
-    event.preventDefault();
-    futureEl.innerHTML= "";
-    todayEl.innerHTML= "";
-
-    var city = cityEl.value
-    getWeather(city);
-    prevcities.push(city);
-    localStorage.setItem('Searched Cities', JSON.stringify(prevcities));
-  })
 
 
+  searchbtn.addEventListener("click", function(){
+    getWeather();
+  });
+  
+  
+</script>
 
-  function storedCities() {
-    var storedCities = JSON.parse(localStorage.getItem('Searched Cities'));
-    if (storedCities !== null) {
-      prevcities = storedCities;
-      pastCities()
-    }
-  };
+</body>
 
-  function pastCities() { 
-    previouscitiesEl.innerHTML= "";
-
-    for (var i=0; i<prevcities.length; i++) {
-      var prevcity = document.createElement('button');
-      prevcity.textContent = prevcities[i];
-      prevcity.addEventListener("click", function(event) {
-        event.preventDefault();
-        futureEl.innerHTML= "";
-        todayEl.innerHTML= "";
-
-        var city = prevcities[i]
-        getWeather(city);
-
-      } )
-      previouscitiesEl.appendChild(prevcity)
-    }
-
-  }
-
-
-  // function displaySearchedCities() {
-  //   previousCityEl.innerHTML = '';
-  //   for (var i = 0; i < searchedCities.length; i++) {
-  //     var cityBtn = document.createElement('button');
-  //     cityBtn.classList = 'list-group-item list-group-item-action';
-  //     cityBtn.textContent = searchedCities[i];
-  //     cityBtn.addEventListener('click', function() {
-  //       cityInputEl.value = this.textContent;
-  //       getWeather();
-  //     });
-  //     previousCityEl.appendChild(cityBtn);
-  //   }
-  // }
+</html>

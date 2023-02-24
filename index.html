@@ -7,31 +7,42 @@
 
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
   
+  <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Do I need a Raincoat?</title>
 </head>
 
 <body>
     <header> 
-        <h2>Your 5-Day Forecast</h2>
+        <h2>Do I need a Raincoat?</h2>
     </header>
       
-    <main>
-        <section id="todayforecast">
-    
-        </section>
 
-        <section id="futureforecast">
-            <h4>Future Forecast</h4>
-        </section>
-          
-    </main>
+    <div id="contentbox">
+        <div id="searchaside">
+          <form id="searchbox"> 
+            <label for="cityname">What city would you like to search?</label><br>
+                        <input type="text" name="city" id="userinput"/>
+                        <button id="searchbtn">Search</button>
+
+          </form>
+          <div id="previoussearches"></div>
+        </div>
+    
+        <div id="weather">
+
+          <h3 id="citytitle"></h3>
+          <section id="todayforecast">
       
-    <aside>
-      <form> 
-        <label for="cityname">What city would you like to search?</label><br>
-                    <input type="text" name="city" id="userinput" class="transparent"  >
-      </form>
-    </aside>
+          </section>
+
+          <section>
+            <h3 id="futuretitle"></h3>
+            <section id="futureforecast"></section>
+          </section>
+            
+        </div>
+
+    </div>
 
     <footer>
 
