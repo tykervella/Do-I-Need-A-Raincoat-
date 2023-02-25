@@ -5,11 +5,16 @@
     font-family: 'Old Standard TT', serif;
 }
 
+body {
+    background-image: url(https://media.cnn.com/api/v1/images/stellar/prod/230106141957-weather-california-upcoming-storms-010623.jpg?c=original);
+    /* background-color: #7b2cbf; */
+}
+
 header { 
     display: flex;
     justify-content: flex-end;
+    height: 150px;
     padding-right: 4.5%;
-
 }
 
 #contentbox {
@@ -21,20 +26,24 @@ header {
 
 #weather {
     width: 75%;
-    border: 5px solid black; 
-    background-image: url(https://media.cnn.com/api/v1/images/stellar/prod/230106141957-weather-california-upcoming-storms-010623.jpg?c=original);
-    display: flex; 
+    border: 5px solid black;     display: flex; 
     flex-direction: column;
     padding-bottom: 15px;
+    background-color: #bdb2ff;
 }
 
 #searchaside {
     width: 20%;
     border: 5px solid black; 
-    background-color: pink;
+    background-color: #bdb2ff;
     display: flex; 
     flex-direction: column; 
     align-items: center;
+    height: 500px;
+}
+
+#searchaside h3 {
+    font-size: 24px;
 }
 
 #searchbox { 
@@ -49,11 +58,21 @@ header {
 
 #todayforecast {
     margin: 0 auto; 
-    border: 5px solid black; 
-    background-color: whitesmoke;
-    width: 50%
+    border: 8px solid #e09f3e; 
+    background-color: #f2cc8f;
+    width: 37%;
+    border-radius: 32px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
 }
 
+.iconstyle img {
+    display: block;
+    height: 50px;
+    width: auto;
+}
 
 
 #futureforecast {
@@ -65,25 +84,34 @@ header {
 .futurebox {
     width: 27%;
     margin: 10px auto;
-    border: 5px solid black; 
-    background-color: whitesmoke;
+    border: 8px solid #e09f3e; 
+    background-color: #f2cc8f;
+    border-radius: 32px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+
 }
 
 h2, h3, h4, p {
     text-align: center;
+    margin: 2px;
 }
 
 h2 { 
     font-size: 72px;
     font-family: 'Bebas Neue', cursive;
     font-style: oblique;
+    color: #e09f3e;
+    text-shadow: 8px 2px black;
 }
 
 h3 {
     font-size: 36px;
     font-family: 'Bebas Neue', cursive;
-    color: whitesmoke; 
-    text-shadow: 7px 4px 3px black;
+    color: #7b2cbf; 
+    margin-top: 15px;
 }
 
 h4 {
@@ -93,6 +121,49 @@ h4 {
 }
 
 
+#previoussearches {
+    margin-bottom: 15px;
+}
+
+
+
 button { 
-    margin: 0 auto; 
+    margin: 5px auto; 
+    display: block;
+    
+}
+
+#clearhist, #searchbtn {
+    background-color: #f2cc8f;
+    border: 2.25px solid #e09f3e;
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 15px;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#searchbtn {
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) { 
+    
+/* changes the flex-direction of the main webpage when viewing on mobile */
+    #contentbox {
+        flex-direction: column;
+    }
+
+    #weather {
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    #searchaside {
+        width: 70%;
+        margin: 10px auto;
+    }
+
 }
